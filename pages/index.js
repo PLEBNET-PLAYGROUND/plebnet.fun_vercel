@@ -61,6 +61,13 @@ export default function Home() {
 						<p>All of the Plebnet Playground code in one place!</p>
 					</a>
 
+					<a
+						href='https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker#readme'
+						className={styles.card}>
+						<h2>Learn More &rarr;</h2>
+						<p>An in depth explanation of plebnet</p>
+					</a>
+
 					{/* <a
 						href='https://github.com/vercel/next.js/tree/master/examples'
 						className={styles.card}>
