@@ -3,6 +3,8 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import React from 'react'
 import { getCoins } from './api/hello'
+import Button from 'antd/lib/button'
+import Input from 'antd/lib/input'
 
 export default function Home() {
 	const [onChainAddress, setOnChainAddress] = React.useState('')
@@ -25,26 +27,20 @@ export default function Home() {
 					height={377 / 1.5}
 				/>
 				<p className={styles.description}>Get test coins here:</p>
-				<div style={{ display: 'flex', width: '100%' }}>
-					<input
-						className={styles.input}
-						autoComplete='off'
-						//type="email"
-						id='onChain-address-input-field'
+				<div style={{ display: 'flex', width: '80%' }}>
+					<Input
 						value={onChainAddress}
 						onChange={(e) => setOnChainAddress(e.target.value)}
-						//  onFocus={() => setFocused(true)}
-						//  onBlur={() => setFocused(false)}
 						placeholder='Enter your on-chain address'
-						aria-label='your on-chain address'
 					/>
 
-					<button
-						className={styles.submit}
-						//	disabled={formState === 'loading'}
-						onClick={() => getCoins(onChainAddress)}>
+					<Button
+						loading={false}
+						style={{ marginLeft: 8 }}
+						onClick={() => getCoins(onChainAddress)}
+						type='primary'>
 						Submit
-					</button>
+					</Button>
 				</div>
 				<div className={styles.grid}>
 					<a
