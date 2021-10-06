@@ -5,6 +5,11 @@ import React from 'react'
 import { getCoins } from './api/hello'
 import Button from 'antd/lib/button'
 import Input from 'antd/lib/input'
+import Card from 'antd/lib/card'
+import Space from 'antd/lib/space'
+import Typography from 'antd/lib/typography'
+import Divider from 'antd/lib/divider'
+import Title from 'antd/lib/typography/Title'
 
 export default function Home() {
 	const [onChainAddress, setOnChainAddress] = React.useState('')
@@ -17,16 +22,22 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.main}>
-				<h1 className={styles.title}>
+				<Title>
+					{' '}
 					Welcome to the <a>Plebnet.fun</a> faucet
-				</h1>
-				<Image
-					src='/playgroundCropped.png'
-					alt='Vercel Logo'
-					width={703 / 1.5}
-					height={377 / 1.5}
-				/>
-				<p className={styles.description}>Get test coins here:</p>
+				</Title>
+
+				<div style={{ marginBottom: 48 }}>
+					<Image
+						src='/playgroundCropped.png'
+						alt='Vercel Logo'
+						width={703 / 1.5}
+						height={377 / 1.5}
+					/>
+				</div>
+
+				<Title level={4}>Get test coins here:</Title>
+				{/* <p className={styles.description}>Get test coins here:</p> */}
 				<div style={{ display: 'flex', width: '80%' }}>
 					<Input
 						value={onChainAddress}
@@ -42,7 +53,19 @@ export default function Home() {
 						Submit
 					</Button>
 				</div>
-				<div className={styles.grid}>
+
+				{/* <Divider /> */}
+
+				{/* <Card
+						size='small'
+						title='Small size card'
+						extra={<a href='#'>More</a>}
+						style={{ width: 300 }}>
+						<p>Card content</p>
+						<p>Card content</p>
+						<p>Card content</p>
+					</Card>
+
 					<a
 						href='https://plebnet.wiki/wiki/Plebnet_Playground'
 						className={styles.card}>
@@ -62,9 +85,9 @@ export default function Home() {
 						className={styles.card}>
 						<h2>Learn More &rarr;</h2>
 						<p>An in depth explanation of plebnet</p>
-					</a>
+					</a> */}
 
-					{/* <a
+				{/* <a
 						href='https://github.com/vercel/next.js/tree/master/examples'
 						className={styles.card}>
 						<h2>Examples &rarr;</h2>
@@ -79,20 +102,31 @@ export default function Home() {
 							Instantly deploy your Next.js site to a public URL with Vercel.
 						</p>
 					</a> */}
-				</div>
 			</main>
 
-			{/* <footer className={styles.footer}>
-				<a
-					href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-					target='_blank'
-					rel='noopener noreferrer'>
-					Powered by{' '}
-					<span className={styles.logo}>
-						<Image src='/vercel.svg' alt='Vercel Logo' width={72} height={16} />
-					</span>
-				</a>
-			</footer> */}
+			<footer className={styles.footer}>
+				<Space split={<Divider type='vertical' />}>
+					<Typography.Link href='https://plebnet.wiki/wiki/Plebnet_Playground'>
+						Wiki Page
+					</Typography.Link>
+					<Typography.Link href='https://github.com/PLEBNET-PLAYGROUND'>
+						GitHub
+					</Typography.Link>
+					<Typography.Link href='https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker#readme'>
+						More Info
+					</Typography.Link>
+				</Space>
+
+				{/* // <a
+				// 	href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
+				// 	target='_blank'
+				// 	rel='noopener noreferrer'>
+				// 	Powered by{' '}
+				// 	<span className={styles.logo}>
+				// 		<Image src='/vercel.svg' alt='Vercel Logo' width={72} height={16} />
+				// 	</span>
+				// </a> */}
+			</footer>
 		</div>
 	)
 }
