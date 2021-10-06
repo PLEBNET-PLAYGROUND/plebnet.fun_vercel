@@ -99,7 +99,8 @@ export default function Home() {
 						onClick={() =>
 							router.push('https://plebnet.wiki/wiki/Plebnet_Playground')
 						}
-						type='dashed'
+						type='primary'
+						ghost
 						size={'large'}>
 						Wiki Page &rarr;
 					</Button>
@@ -107,7 +108,8 @@ export default function Home() {
 					<Button
 						block
 						onClick={() => router.push('https://github.com/PLEBNET-PLAYGROUND')}
-						type='dashed'
+						type='primary'
+						ghost
 						size={'large'}>
 						GitHub &rarr;
 					</Button>
@@ -119,7 +121,8 @@ export default function Home() {
 								'https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker#readme'
 							)
 						}
-						type='dashed'
+						type='primary'
+						ghost
 						size={'large'}>
 						More Info &rarr;
 					</Button>
