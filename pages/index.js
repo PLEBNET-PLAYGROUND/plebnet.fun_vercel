@@ -53,66 +53,26 @@ export default function Home() {
 						Submit
 					</Button>
 				</div>
-
-				{/* <Divider /> */}
-
-				{/* <Card
-						size='small'
-						title='Small size card'
-						extra={<a href='#'>More</a>}
-						style={{ width: 300 }}>
-						<p>Card content</p>
-						<p>Card content</p>
-						<p>Card content</p>
-					</Card>
-
-					<a
-						href='https://plebnet.wiki/wiki/Plebnet_Playground'
-						className={styles.card}>
-						<h2>Wiki Page &rarr;</h2>
-						<p>Find in-depth information about the Plebnet Playground</p>
-					</a>
-
-					<a
-						href='https://github.com/PLEBNET-PLAYGROUND'
-						className={styles.card}>
-						<h2>GitHub &rarr;</h2>
-						<p>All of the Plebnet Playground code in one place!</p>
-					</a>
-
-					<a
-						href='https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker#readme'
-						className={styles.card}>
-						<h2>Learn More &rarr;</h2>
-						<p>An in depth explanation of plebnet</p>
-					</a> */}
-
-				{/* <a
-						href='https://github.com/vercel/next.js/tree/master/examples'
-						className={styles.card}>
-						<h2>Examples &rarr;</h2>
-						<p>Discover and deploy boilerplate example Next.js projects.</p>
-					</a>
-
-					<a
-						href='https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-						className={styles.card}>
-						<h2>Deploy &rarr;</h2>
-						<p>
-							Instantly deploy your Next.js site to a public URL with Vercel.
-						</p>
-					</a> */}
 			</main>
 
 			<footer className={styles.footer}>
 				<Space split={<Divider type='vertical' />}>
-					<Typography.Link href='https://plebnet.wiki/wiki/Plebnet_Playground'>
+					<Typography.Link
+						target='_blank'
+						rel='noopener noreferrer'
+						href='https://plebnet.wiki/wiki/Plebnet_Playground'>
 						Wiki Page
 					</Typography.Link>
-					<Typography.Link href='https://github.com/PLEBNET-PLAYGROUND'>
+					<Typography.Link
+						target='_blank'
+						rel='noopener noreferrer'
+						href='https://github.com/PLEBNET-PLAYGROUND'>
 						GitHub
 					</Typography.Link>
-					<Typography.Link href='https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker#readme'>
+					<Typography.Link
+						target='_blank'
+						rel='noopener noreferrer'
+						href='https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker#readme'>
 						More Info
 					</Typography.Link>
 				</Space>
