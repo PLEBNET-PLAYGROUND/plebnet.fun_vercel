@@ -88,9 +88,32 @@ export default function Home() {
 						Submit
 					</Button>
 				</div>
+
+				<div className={styles.grid}>
+					<a
+						href='https://plebnet.wiki/wiki/Plebnet_Playground'
+						className={styles.card}>
+						<h2>Wiki Page &rarr;</h2>
+						<p>Find in-depth information about the Plebnet Playground</p>
+					</a>
+
+					<a
+						href='https://github.com/PLEBNET-PLAYGROUND'
+						className={styles.card}>
+						<h2>GitHub &rarr;</h2>
+						<p>All of the Plebnet Playground code in one place!</p>
+					</a>
+
+					<a
+						href='https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker#readme'
+						className={styles.card}>
+						<h2>Learn More &rarr;</h2>
+						<p>An in depth explanation of plebnet</p>
+					</a>
+				</div>
 			</main>
 
-			<footer className={styles.footer}>
+			{/* <footer className={styles.footer}>
 				<Space
 					style={{ justifyContent: 'center', flexWrap: 'wrap' }}
 					split={<Divider type='vertical' />}>
@@ -100,8 +123,7 @@ export default function Home() {
 							router.push('https://plebnet.wiki/wiki/Plebnet_Playground')
 						}
 						type='primary'
-						ghost
-						size={'large'}>
+						ghost>
 						Wiki Page &rarr;
 					</Button>
 
@@ -109,8 +131,7 @@ export default function Home() {
 						block
 						onClick={() => router.push('https://github.com/PLEBNET-PLAYGROUND')}
 						type='primary'
-						ghost
-						size={'large'}>
+						ghost>
 						GitHub &rarr;
 					</Button>
 
@@ -122,12 +143,11 @@ export default function Home() {
 							)
 						}
 						type='primary'
-						ghost
-						size={'large'}>
+						ghost>
 						More Info &rarr;
 					</Button>
 				</Space>
-			</footer>
+			</footer> */}
 		</div>
 	)
 }
