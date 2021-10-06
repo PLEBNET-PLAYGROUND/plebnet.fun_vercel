@@ -11,9 +11,11 @@ import Title from 'antd/lib/typography/Title'
 import message from 'antd/lib/message'
 import Text from 'antd/lib/typography/Text'
 import { useRouter } from 'next/router'
+import { useWindowSize } from '../hooks'
 
 export default function Home() {
 	const router = useRouter()
+	const dims = useWindowSize()
 	const [getCoinsResult, setGetCoinsResult] = React.useState('')
 	const [loading, setLoading] = React.useState(false)
 	const [onChainAddress, setOnChainAddress] = React.useState('')
@@ -52,8 +54,8 @@ export default function Home() {
 					<Image
 						src='/playgroundCropped.png'
 						alt='Vercel Logo'
-						width={703 / 1.5}
-						height={377 / 1.5}
+						width={dims.width < 700 ? 703 / 3 : 703 / 1.5}
+						height={dims.width < 700 ? 377 / 3 : 377 / 1.5}
 					/>
 				</div>
 
@@ -89,7 +91,9 @@ export default function Home() {
 			</main>
 
 			<footer className={styles.footer}>
-				<Space split={<Divider type='vertical' />}>
+				<Space
+					style={{ justifyContent: 'center', flexWrap: 'wrap' }}
+					split={<Divider type='vertical' />}>
 					<Button
 						block
 						onClick={() =>
