@@ -10,8 +10,10 @@ import Divider from 'antd/lib/divider'
 import Title from 'antd/lib/typography/Title'
 import message from 'antd/lib/message'
 import Text from 'antd/lib/typography/Text'
+import { useRouter } from 'next/router'
 
 export default function Home() {
+	const router = useRouter()
 	const [getCoinsResult, setGetCoinsResult] = React.useState('')
 	const [loading, setLoading] = React.useState(false)
 	const [onChainAddress, setOnChainAddress] = React.useState('')
@@ -88,24 +90,35 @@ export default function Home() {
 
 			<footer className={styles.footer}>
 				<Space split={<Divider type='vertical' />}>
-					<Typography.Link
-						target='_blank'
-						rel='noopener noreferrer'
-						href='https://plebnet.wiki/wiki/Plebnet_Playground'>
-						Wiki Page
-					</Typography.Link>
-					<Typography.Link
-						target='_blank'
-						rel='noopener noreferrer'
-						href='https://github.com/PLEBNET-PLAYGROUND'>
-						GitHub
-					</Typography.Link>
-					<Typography.Link
-						target='_blank'
-						rel='noopener noreferrer'
-						href='https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker#readme'>
-						More Info
-					</Typography.Link>
+					<Button
+						block
+						onClick={() =>
+							router.push('https://plebnet.wiki/wiki/Plebnet_Playground')
+						}
+						type='dashed'
+						size={'large'}>
+						Wiki Page &rarr;
+					</Button>
+
+					<Button
+						block
+						onClick={() => router.push('https://github.com/PLEBNET-PLAYGROUND')}
+						type='dashed'
+						size={'large'}>
+						GitHub &rarr;
+					</Button>
+
+					<Button
+						block
+						onClick={() =>
+							router.push(
+								'https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker#readme'
+							)
+						}
+						type='dashed'
+						size={'large'}>
+						More Info &rarr;
+					</Button>
 				</Space>
 			</footer>
 		</div>
