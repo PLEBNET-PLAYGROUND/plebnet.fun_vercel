@@ -70,7 +70,8 @@
 
 .card {
 	margin: 1rem;
-	height: 184px;
+	height: 250px;
+	/* height: 184px; */
 	padding: 1.5rem;
 	text-align: left;
 	color: inherit;
@@ -78,8 +79,8 @@
 	border: 1px solid #eaeaea;
 	border-radius: 10px;
 	transition: color 0.15s ease, border-color 0.15s ease;
-	width: 30%;
-	min-width: 260px;
+	width: 20%;
+	min-width: 200px;
 }
 
 .card:hover,

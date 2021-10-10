@@ -110,6 +110,11 @@ export default function Home() {
 						<h2>Learn More &rarr;</h2>
 						<p>An in depth explanation of plebnet</p>
 					</a>
+
+					<a href='/visualizer' className={styles.card}>
+						<h2>Visualizer &rarr;</h2>
+						<p>A visualization of Plebnet.fun nodes</p>
+					</a>
 				</div>
 			</main>
 
