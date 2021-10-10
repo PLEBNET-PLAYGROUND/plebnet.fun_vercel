@@ -18,7 +18,7 @@ export default function Home() {
 
 	const myConfig = {
 		automaticRearrangeAfterDropNode: false,
-		collapsible: false,
+		collapsible: true,
 		directed: false,
 		focusAnimationDuration: 0.75,
 		focusZoom: 1,
@@ -51,7 +51,8 @@ export default function Home() {
 			highlightFontWeight: 'normal',
 			highlightStrokeColor: 'SAME',
 			highlightStrokeWidth: 'SAME',
-			labelProperty: 'id',
+
+			labelProperty: 'name',
 			mouseCursor: 'pointer',
 			opacity: 1,
 			renderLabel: true,
