@@ -4,9 +4,7 @@ import styles from '../styles/Home.module.css'
 import React from 'react'
 import Button from 'antd/lib/button'
 import Input from 'antd/lib/input'
-import Space from 'antd/lib/space'
-import Typography from 'antd/lib/typography'
-import Divider from 'antd/lib/divider'
+import Link from 'next/link'
 import Title from 'antd/lib/typography/Title'
 import message from 'antd/lib/message'
 import Text from 'antd/lib/typography/Text'
@@ -88,9 +86,38 @@ export default function Home() {
 						Submit
 					</Button>
 				</div>
+
+				<div className={styles.grid}>
+					<a
+						href='https://plebnet.wiki/wiki/Plebnet_Playground'
+						className={styles.card}>
+						<h2>Wiki Page &rarr;</h2>
+						<p>Find in-depth information about the Plebnet Playground</p>
+					</a>
+
+					<a
+						href='https://github.com/PLEBNET-PLAYGROUND'
+						className={styles.card}>
+						<h2>GitHub &rarr;</h2>
+						<p>All of the Plebnet Playground code in one place!</p>
+					</a>
+
+					<a
+						href='https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker#readme'
+						className={styles.card}>
+						<h2>Learn More &rarr;</h2>
+						<p>An in depth explanation of plebnet</p>
+					</a>
+					<Link href='/visualizer'>
+						<a className={styles.card}>
+							<h2>Visualizer &rarr;</h2>
+							<p>A visualization of Plebnet.fun nodes</p>
+						</a>
+					</Link>
+				</div>
 			</main>
 
-			<footer className={styles.footer}>
+			{/* <footer className={styles.footer}>
 				<Space
 					style={{ justifyContent: 'center', flexWrap: 'wrap' }}
 					split={<Divider type='vertical' />}>
@@ -99,16 +126,16 @@ export default function Home() {
 						onClick={() =>
 							router.push('https://plebnet.wiki/wiki/Plebnet_Playground')
 						}
-						type='dashed'
-						size={'large'}>
+						type='primary'
+						ghost>
 						Wiki Page &rarr;
 					</Button>
 
 					<Button
 						block
 						onClick={() => router.push('https://github.com/PLEBNET-PLAYGROUND')}
-						type='dashed'
-						size={'large'}>
+						type='primary'
+						ghost>
 						GitHub &rarr;
 					</Button>
 
@@ -119,12 +146,12 @@ export default function Home() {
 								'https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker#readme'
 							)
 						}
-						type='dashed'
-						size={'large'}>
+						type='primary'
+						ghost>
 						More Info &rarr;
 					</Button>
 				</Space>
-			</footer>
+			</footer> */}
 		</div>
 	)
 }
