@@ -4,9 +4,7 @@ import styles from '../styles/Home.module.css'
 import React from 'react'
 import Button from 'antd/lib/button'
 import Input from 'antd/lib/input'
-import Space from 'antd/lib/space'
-import Typography from 'antd/lib/typography'
-import Divider from 'antd/lib/divider'
+import Link from 'next/link'
 import Title from 'antd/lib/typography/Title'
 import message from 'antd/lib/message'
 import Text from 'antd/lib/typography/Text'
@@ -110,11 +108,12 @@ export default function Home() {
 						<h2>Learn More &rarr;</h2>
 						<p>An in depth explanation of plebnet</p>
 					</a>
-
-					<a href='/visualizer' className={styles.card}>
-						<h2>Visualizer &rarr;</h2>
-						<p>A visualization of Plebnet.fun nodes</p>
-					</a>
+					<Link href='/visualizer'>
+						<a className={styles.card}>
+							<h2>Visualizer &rarr;</h2>
+							<p>A visualization of Plebnet.fun nodes</p>
+						</a>
+					</Link>
 				</div>
 			</main>
 
