@@ -11,14 +11,10 @@
   "dependencies": {
     "@ant-design/icons": "4.7.0",
     "antd": "4.16.13",
-    "d3": "5.16.0",
     "just-debounce-it": "1.5.0",
     "next": "11.1.2",
-    "next-transpile-modules": "8.0.0",
     "react": "17.0.2",
-    "react-d3-graph": "2.6.0",
     "react-dom": "17.0.2",
-    "react-force-graph": "1.41.7",
     "react-force-graph-3d": "1.21.10",
     "swr": "1.0.1"
   },

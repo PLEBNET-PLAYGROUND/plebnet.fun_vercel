@@ -7,6 +7,7 @@ import { SearchOutlined } from '@ant-design/icons'
 import dynamic from 'next/dynamic'
 import debounce from 'just-debounce-it'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const ForceGraph3D = dynamic(() => import('react-force-graph-3d'), {
 	ssr: false
@@ -68,10 +69,12 @@ export default function Home() {
 						top: 24,
 						left: 24
 					}}>
-					<Title>Plebnet.fun nodes</Title>
+					<Title>
+						<Link href='/'>Plebnet.fun </Link>
+						nodes
+					</Title>
 					<Input
 						onChange={(e) => handleSearch(e)}
-						style={{ width: 300 }}
 						placeholder='Search...'
 						suffix={<SearchOutlined style={{ color: 'rgba(0,0,0,.45)' }} />}
 					/>
