@@ -8,6 +8,8 @@ import useSWR from 'swr'
 import { SearchOutlined } from '@ant-design/icons'
 import debounce from 'just-debounce-it'
 
+import ForceGraph3D from 'react-force-graph-3d'
+
 const placeholderNodes = {
 	nodes: [],
 	links: []
@@ -134,13 +136,18 @@ export default function Home() {
 					/>
 				</div>
 				<div>
-					<Graph
+					<ForceGraph3D
+						linkColor='black'
+						backgroundColor='white'
+						graphData={filteredNodes}
+					/>
+					{/* <Graph
 						id='graph-id'
 						data={filteredNodes}
 						config={myConfig}
 						onClickNode={onClickNode}
 						onClickLink={onClickLink}
-					/>
+					/> */}
 				</div>
 			</main>
 		</div>

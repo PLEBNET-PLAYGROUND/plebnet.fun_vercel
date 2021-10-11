@@ -17,6 +17,8 @@
     "react": "17.0.2",
     "react-d3-graph": "2.6.0",
     "react-dom": "17.0.2",
+    "react-force-graph": "1.41.7",
+    "react-force-graph-3d": "1.21.10",
     "swr": "1.0.1"
   },
   "devDependencies": {
