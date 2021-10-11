@@ -2,11 +2,16 @@ import styles from '../styles/Home.module.css'
 import React from 'react'
 import Input from 'antd/lib/input'
 import Title from 'antd/lib/typography/Title'
-import { useWindowSize } from '../hooks'
-import { Graph } from 'react-d3-graph'
 import useSWR from 'swr'
 import { SearchOutlined } from '@ant-design/icons'
+import dynamic from 'next/dynamic'
 import debounce from 'just-debounce-it'
+import Image from 'next/image'
+import Link from 'next/link'
+
+const ForceGraph3D = dynamic(() => import('react-force-graph-3d'), {
+	ssr: false
+})
 
 const placeholderNodes = {
 	nodes: [],
@@ -14,75 +19,6 @@ const placeholderNodes = {
 }
 
 export default function Home() {
-	const dims = useWindowSize()
-
-	const myConfig = {
-		automaticRearrangeAfterDropNode: false,
-		collapsible: false,
-		directed: false,
-		focusAnimationDuration: 0.75,
-		focusZoom: 1,
-		freezeAllDragEvents: false,
-		height: dims.height - 97 - 48 - 24 - 12,
-		highlightDegree: 1,
-		highlightOpacity: 1,
-		linkHighlightBehavior: false,
-		maxZoom: 12,
-		minZoom: 0.1,
-		nodeHighlightBehavior: false,
-		panAndZoom: false,
-		staticGraph: false,
-		staticGraphWithDragAndDrop: false,
-		width: dims.width,
-		d3: {
-			alphaTarget: 0.05,
-			gravity: -100,
-			linkLength: 100,
-			linkStrength: 1,
-			disableLinkForce: false
-		},
-		node: {
-			color: '#d3d3d3',
-			fontColor: 'black',
-			fontSize: 8,
-			fontWeight: 'normal',
-			highlightColor: 'SAME',
-			highlightFontSize: 8,
-			highlightFontWeight: 'normal',
-			highlightStrokeColor: 'SAME',
-			highlightStrokeWidth: 'SAME',
-			labelProperty: 'id',
-			mouseCursor: 'pointer',
-			opacity: 1,
-			renderLabel: true,
-			size: 200,
-			strokeColor: 'none',
-			strokeWidth: 1.5,
-			svg: '',
-			symbolType: 'circle'
-		},
-		link: {
-			color: '#d3d3d3',
-			fontColor: 'black',
-			fontSize: 8,
-			fontWeight: 'normal',
-			highlightColor: 'SAME',
-			highlightFontSize: 8,
-			highlightFontWeight: 'normal',
-			labelProperty: 'label',
-			mouseCursor: 'pointer',
-			opacity: 1,
-			renderLabel: false,
-			semanticStrokeWidth: false,
-			strokeWidth: 0.5,
-			markerHeight: 6,
-			markerWidth: 6,
-			strokeDasharray: 0,
-			strokeDashoffset: 0,
-			strokeLinecap: 'butt'
-		}
-	}
-
 	const getNodes = (url) => fetch(url).then((_) => _.json())
 
 	const { data: nodes } = useSWR(
@@ -90,14 +26,6 @@ export default function Home() {
 			`https://mysterious-journey-27455.herokuapp.com/http://signet.xenon.fun:5000/graph`,
 		getNodes
 	)
-
-	const onClickNode = function (nodeId) {
-		window.alert(`Clicked node ${nodeId}`)
-	}
-
-	const onClickLink = function (source, target) {
-		window.alert(`Clicked link between ${source} and ${target}`)
-	}
 
 	const handleSearch = debounce((e) => {
 		setSearchTerm(e.target.value)
@@ -120,26 +48,66 @@ export default function Home() {
 		return _nodes
 	}, [nodes, searchTerm])
 
+	const createNodeLabel = (node) => {
+		const { id, name } = node
+
+		return `
+				<div style="color: black; z-index: 99999;">	
+						<div>${name}</div>
+						<div style="color: grey;">${id}</div>
+				</div>
+		`
+	}
+
 	return (
 		<div className={styles.container}>
 			<main className={styles.main}>
-				<div style={{ marginTop: 48, marginBottom: 24 }}>
-					<Title>Plebnet.fun visualizer</Title>
+				<div
+					style={{
+						zIndex: 99999,
+						position: 'absolute',
+						top: 24,
+						left: 24
+					}}>
+					<Title>
+						<Link href='/'>Plebnet.fun </Link>
+						nodes
+					</Title>
 					<Input
 						onChange={(e) => handleSearch(e)}
-						style={{ width: 300 }}
 						placeholder='Search...'
 						suffix={<SearchOutlined style={{ color: 'rgba(0,0,0,.45)' }} />}
 					/>
 				</div>
+
 				<div>
-					<Graph
-						id='graph-id'
-						data={filteredNodes}
-						config={myConfig}
-						onClickNode={onClickNode}
-						onClickLink={onClickLink}
+					<ForceGraph3D
+						linkWidth={0.8}
+						linkDirectionalParticles={6}
+						backgroundColor='white'
+						graphData={filteredNodes}
+						nodeLabel={createNodeLabel}
 					/>
+				</div>
+
+				<div
+					style={{
+						zIndex: 99999,
+						position: 'absolute',
+						bottom: 10,
+						right: 24
+					}}>
+					<a href='https://tippin.me/@sndbtc'>
+						<div style={{ display: 'flex' }}>
+							<div style={{ marginTop: 3 }}>Tip me</div>
+							<Image
+								src='/eggplant.svg'
+								alt='Vercel Logo'
+								width={24}
+								height={24}
+							/>
+						</div>
+					</a>
 				</div>
 			</main>
 		</div>
