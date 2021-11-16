@@ -100,12 +100,6 @@ export default function Home() {
 					<a href='https://tippin.me/@sndbtc'>
 						<div style={{ display: 'flex' }}>
 							<div style={{ marginTop: 3 }}>Tip me</div>
-							<Image
-								src='/eggplant.svg'
-								alt='Vercel Logo'
-								width={24}
-								height={24}
-							/>
 						</div>
 					</a>
 				</div>
