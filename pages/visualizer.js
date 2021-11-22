@@ -79,16 +79,19 @@ export default function Home() {
 						suffix={<SearchOutlined style={{ color: 'rgba(0,0,0,.45)' }} />}
 					/>
 				</div>
-
-				<div>
-					<ForceGraph3D
-						linkWidth={0.8}
-						linkDirectionalParticles={6}
-						backgroundColor='white'
-						graphData={filteredNodes}
-						nodeLabel={createNodeLabel}
-					/>
-				</div>
+				{filteredNodes?.links?.length > 0 ? (
+					<div>
+						<ForceGraph3D
+							linkWidth={0.8}
+							linkDirectionalParticles={6}
+							backgroundColor='white'
+							graphData={filteredNodes}
+							nodeLabel={createNodeLabel}
+						/>
+					</div>
+				) : (
+					<div>Loading Nodes...</div>
+				)}
 
 				<div
 					style={{
