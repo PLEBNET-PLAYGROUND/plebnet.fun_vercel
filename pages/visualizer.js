@@ -35,16 +35,18 @@ export default function Home() {
 
 	const filteredNodes = React.useMemo(() => {
 		if (!nodes) return placeholderNodes
-
+		const _searchTerm = searchTerm.toLowerCase()
 		const _nodes = JSON.parse(JSON.stringify(nodes))
 		let _links = JSON.parse(JSON.stringify(nodes.links))
 		if (searchTerm.length > 0) {
 			_links = _links.filter(
 				(link) =>
-					link.source.includes(searchTerm) || link.target.includes(searchTerm)
+					link.source.toLowerCase().includes(_searchTerm) ||
+					link.target.toLowerCase().includes(_searchTerm)
 			)
+			_nodes.links = _links
 		}
-		_nodes.links = _links
+
 		return _nodes
 	}, [nodes, searchTerm])
 
@@ -75,7 +77,7 @@ export default function Home() {
 					</Title>
 					<Input
 						onChange={(e) => handleSearch(e)}
-						placeholder='Search...'
+						placeholder='Search by node ID'
 						suffix={<SearchOutlined style={{ color: 'rgba(0,0,0,.45)' }} />}
 					/>
 				</div>
@@ -89,8 +91,10 @@ export default function Home() {
 							nodeLabel={createNodeLabel}
 						/>
 					</div>
-				) : (
+				) : searchTerm.length < 1 ? (
 					<div>Loading Nodes...</div>
+				) : (
+					<div>No search results found.</div>
 				)}
 
 				<div
