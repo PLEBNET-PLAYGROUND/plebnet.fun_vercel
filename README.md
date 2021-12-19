@@ -1,4 +1,6 @@
-the main branch is currently deployed to: https://plebnet-fun-vercel.vercel.app/
+This front-end was built by Jared Dahlke. Please contact me at jared.dahlke@gmail.com if you need anything. I don't go on Telegram very often, but I'm always around to make improvements or to work on other bitcoin related projects. Hit me up!
+
+the main branch is currently deployed to: https://plebnet.fun using Vercel.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
