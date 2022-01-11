@@ -114,6 +114,10 @@ export default function Home() {
 							<p>A visualization of Plebnet.fun nodes</p>
 						</a>
 					</Link>
+					<a href='https://explorer.plebnet.fun/' className={styles.card}>
+						<h2>Block Explorer &rarr;</h2>
+						<p>An educational Bitcoin explorer</p>
+					</a>
 				</div>
 			</main>
 
