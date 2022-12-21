@@ -20,7 +20,7 @@ export default function Home() {
 
 	const fetchCoins = async () => {
 		setLoading(true)
-		const url = `https://mysterious-journey-27455.herokuapp.com/http://signet.xenon.fun:5000/faucet?address=${onChainAddress}`
+		const url = `https://cors-anywhere.herokuapp.com/http://signet.xenon.fun:5000/faucet?address=${onChainAddress}`
 		const result = await fetch(url, {
 			method: 'GET'
 		})

@@ -23,7 +23,7 @@ export default function Home() {
 
 	const { data: nodes } = useSWR(
 		() =>
-			`https://mysterious-journey-27455.herokuapp.com/http://signet.xenon.fun:5000/graph`,
+			`https://cors-anywhere.herokuapp.com/http://signet.xenon.fun:5000/graph`,
 		getNodes
 	)
 
