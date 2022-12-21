@@ -2,12 +2,11 @@ import styles from '../styles/Home.module.css'
 import React from 'react'
 import Input from 'antd/lib/input'
 import Title from 'antd/lib/typography/Title'
-import useSWR from 'swr'
 import { SearchOutlined } from '@ant-design/icons'
 import dynamic from 'next/dynamic'
 import debounce from 'just-debounce-it'
-import Image from 'next/image'
 import Link from 'next/link'
+import { useQuery } from '@tanstack/react-query'
 
 const ForceGraph3D = dynamic(() => import('react-force-graph-3d'), {
 	ssr: false
@@ -19,13 +18,23 @@ const placeholderNodes = {
 }
 
 export default function Home() {
-	const getNodes = (url) => fetch(url).then((_) => _.json())
+	const getNodesFetch = async () => {
+		const res = await fetch('/api/getNodes', {
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			method: 'GET'
+		})
 
-	const { data: nodes } = useSWR(
-		() =>
-			`https://cors-anywhere.herokuapp.com/http://signet.xenon.fun:5000/graph`,
-		getNodes
-	)
+		const result = await res.json()
+		return result.data
+	}
+
+	const {
+		data: nodes,
+		isError,
+		error
+	} = useQuery(['nodesquery'], getNodesFetch)
 
 	const handleSearch = debounce((e) => {
 		setSearchTerm(e.target.value)
@@ -59,6 +68,15 @@ export default function Home() {
 						<div style="color: grey;">${id}</div>
 				</div>
 		`
+	}
+
+	if (isError) {
+		return (
+			<div>
+				There was an error with the API fetching the nodes:{' '}
+				{JSON.stringify(error)}
+			</div>
+		)
 	}
 
 	return (

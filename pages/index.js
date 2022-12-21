@@ -8,24 +8,27 @@ import Link from 'next/link'
 import Title from 'antd/lib/typography/Title'
 import message from 'antd/lib/message'
 import Text from 'antd/lib/typography/Text'
-import { useRouter } from 'next/router'
 import { useWindowSize } from '../hooks'
 
 export default function Home() {
-	const router = useRouter()
 	const dims = useWindowSize()
 	const [getCoinsResult, setGetCoinsResult] = React.useState('')
 	const [loading, setLoading] = React.useState(false)
 	const [onChainAddress, setOnChainAddress] = React.useState('')
 
-	const fetchCoins = async () => {
-		setLoading(true)
-		const url = `https://cors-anywhere.herokuapp.com/http://signet.xenon.fun:5000/faucet?address=${onChainAddress}`
-		const result = await fetch(url, {
-			method: 'GET'
-		})
+	const fetchCoinsClient = async () => {
+		const res = await fetch(
+			`/api/fetchCoins?onChainAddress=${onChainAddress}`,
+			{
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				method: 'GET'
+			}
+		)
 
-		if (result.status === 200) {
+		const result = await res.json()
+		if (result.data === 'Success') {
 			message.success('Success')
 		}
 
@@ -81,7 +84,7 @@ export default function Home() {
 							loading
 						}
 						style={{ marginLeft: 8 }}
-						onClick={() => fetchCoins()}
+						onClick={() => fetchCoinsClient()}
 						type='primary'>
 						Submit
 					</Button>
@@ -120,42 +123,6 @@ export default function Home() {
 					</a>
 				</div>
 			</main>
-
-			{/* <footer className={styles.footer}>
-				<Space
-					style={{ justifyContent: 'center', flexWrap: 'wrap' }}
-					split={<Divider type='vertical' />}>
-					<Button
-						block
-						onClick={() =>
-							router.push('https://plebnet.wiki/wiki/Plebnet_Playground')
-						}
-						type='primary'
-						ghost>
-						Wiki Page &rarr;
-					</Button>
-
-					<Button
-						block
-						onClick={() => router.push('https://github.com/PLEBNET-PLAYGROUND')}
-						type='primary'
-						ghost>
-						GitHub &rarr;
-					</Button>
-
-					<Button
-						block
-						onClick={() =>
-							router.push(
-								'https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker#readme'
-							)
-						}
-						type='primary'
-						ghost>
-						More Info &rarr;
-					</Button>
-				</Space>
-			</footer> */}
 		</div>
 	)
 }
