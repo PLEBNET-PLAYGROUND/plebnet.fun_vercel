@@ -2,34 +2,35 @@
 import Head from 'next/head'
 import React from 'react'
 import Link from 'next/link'
-import { useWindowSize } from '../hooks'
 import axios from '../../node_modules/axios/index'
-import Links from './../components/Links'
 import Image from '../../node_modules/next/image'
 export default function Home() {
-	const dims = useWindowSize()
-	const [getCoinsResult, setGetCoinsResult] = React.useState('')
 	const [loading, setLoading] = React.useState(false)
 	const [onChainAddress, setOnChainAddress] = React.useState('')
 
 	const fetchCoinsClient = async () => {
-		const result = await axios.post('/api', {
-			data: {
-				onChainAddress
-			}
-		})
+		try {
+			const result = await axios.post('/api', {
+				data: {
+					onChainAddress
+				}
+			})
 
-		if (result.data === 'Success') {
-			alert('Success')
+			if (result.data === 'Success') {
+				alert('Success')
+			} else {
+				alert('Failed')
+			}
+		} catch (e) {
+			alert('Failed, see console for more info')
+			console.error(e)
 		}
 
 		setLoading(false)
-
-		return setGetCoinsResult(result.statusText)
 	}
 
 	return (
-		<div className='p-2 flex flex-col items-center'>
+		<div id='home' className={`lg:p-28 sm:p-2  flex flex-col items-center`}>
 			<Head>
 				<title>Plebnet.fun</title>
 				<meta name='description' content='Plebnet.fun' />
@@ -37,24 +38,12 @@ export default function Home() {
 			</Head>
 
 			<main className=''>
-				<h1 className='mt-8 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
-					Welcome to the <span style={{ color: '#1890ff' }}>Plebnet.fun </span>
+				<h1 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl w-full text-center my-8'>
+					Welcome to the <span className='text-blue-500'>Plebnet.fun </span>
 					faucet
 				</h1>
 
-				<div className='flex justify-center' style={{ marginBottom: 48 }}>
-					<Image
-						priority
-						src='/playgroundCropped.png'
-						alt='Vercel Logo'
-						width={500}
-						height={100}
-						//	width={dims?.width < 700 ? 703 / 3 : 703 / 1.5}
-						//	height={dims?.width < 700 ? 377 / 3 : 377 / 1.5}
-					/>
-				</div>
-
-				<div className='mb-4 relative'>
+				<div className='mb-18 relative border-2 border-slate-300 rounded p-8 lg:m-28  sm:mt-8'>
 					<label className='block text-gray-700 text-sm font-bold mb-2'>
 						Get test coins here:
 					</label>
@@ -84,33 +73,40 @@ export default function Home() {
 							</div>
 						)}
 				</div>
+				<div className='flex justify-center mb-4 lg:mb-0'>
+					<Image
+						priority
+						src='/playgroundCropped.png'
+						alt='Vercel Logo'
+						width={400}
+						height={90}
+					/>
+				</div>
 
-				{/* <Links /> */}
-
-				<div className=''>
+				<div className='grid sm:grid-cols-3 grid-cols-1'>
 					<a
 						href='https://plebnet.wiki/wiki/Plebnet_Playground'
-						className='p-2 w-24'>
+						className='card'>
 						<h2 className='text-blue-500'>Wiki Page &rarr;</h2>
 						<p>Find in-depth information about the Plebnet Playground</p>
 					</a>
 
-					<a href='https://github.com/PLEBNET-PLAYGROUND' className='p-2'>
+					<a href='https://github.com/PLEBNET-PLAYGROUND' className='card'>
 						<h2 className='text-blue-500'>GitHub &rarr;</h2>
 						<p>All of the Plebnet Playground code in one place!</p>
 					</a>
 
 					<a
 						href='https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker#readme'
-						className='p-2'>
+						className='card'>
 						<h2 className='text-blue-500'>Learn More &rarr;</h2>
 						<p>An in depth explanation of plebnet</p>
 					</a>
-					<Link href='/visualizer'>
+					<Link href='/visualizer' className='card'>
 						<h2 className='text-blue-500'>Visualizer &rarr;</h2>
 						<p>A visualization of Plebnet.fun nodes</p>
 					</Link>
-					<a href='https://explorer.plebnet.fun/' className='p-2'>
+					<a href='https://explorer.plebnet.fun/' className='card'>
 						<h2 className='text-blue-500'>Block Explorer &rarr;</h2>
 						<p>An educational Bitcoin explorer</p>
 					</a>
