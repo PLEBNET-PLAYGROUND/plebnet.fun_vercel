@@ -106,7 +106,7 @@ export default function Home() {
 						<h2 className='text-blue-500'>Visualizer &rarr;</h2>
 						<p>A visualization of Plebnet.fun nodes</p>
 					</Link>
-					<a href='https://explorer.plebnet.fun/' className='card'>
+					<a href='https://ex.plebnet.bublina.eu.org/' className='card'>
 						<h2 className='text-blue-500'>Block Explorer &rarr;</h2>
 						<p>An educational Bitcoin explorer</p>
 					</a>
